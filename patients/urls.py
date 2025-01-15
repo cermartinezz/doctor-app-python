@@ -21,5 +21,5 @@ from patients.views import ListPatientsView, DetailPatientView
 
 urlpatterns = [
     path('', ListPatientsView.as_view()),
-    path('<int:id>/', DetailPatientView.as_view()),
+    path('<int:pk>/', DetailPatientView.as_view()),
 ]
