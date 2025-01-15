@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from patients.views import patient_list_view, patient_detail_view
+from patients.views import ListPatientsView, DetailPatientView
 
 urlpatterns = [
-    path('', patient_list_view),
-    path('<int:id>/', patient_detail_view),
+    path('', ListPatientsView.as_view()),
+    path('<int:id>/', DetailPatientView.as_view()),
 ]
