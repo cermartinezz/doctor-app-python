@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from bookings.models import Appointment, MedicalNote
+from appointments.models import Appointment, MedicalNote
 
 
 class AppointmentSerializer(ModelSerializer):
