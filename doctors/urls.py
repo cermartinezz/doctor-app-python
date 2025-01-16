@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from patients.views import ListPatientsView, DetailPatientView
+from doctors.views import ListDoctorView, DetailDoctorView, ListDepartmentView, DetailDepartmentView
 
 urlpatterns = [
-    path('patients/', ListPatientsView.as_view()),
-    path('patients/<int:pk>/', DetailPatientView.as_view()),
+    path('doctors/', ListDoctorView.as_view()),
+    path('doctors/<int:pk>/', DetailDoctorView.as_view()),
+    path('departments/<int:pk>/', ListDepartmentView.as_view()),
+    path('departments/<int:pk>/', DetailDepartmentView.as_view()),
 ]
