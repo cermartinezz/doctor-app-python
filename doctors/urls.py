@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from doctors.views import ListDoctorView, DetailDoctorView, ListDepartmentView, DetailDepartmentView
+from doctors.viewsets import DoctorViewSet
+
+router = DefaultRouter()
+router.register('doctors', DoctorViewSet)
 
 urlpatterns = [
-    path('doctors/', ListDoctorView.as_view()),
-    path('doctors/<int:pk>/', DetailDoctorView.as_view()),
     path('departments/<int:pk>/', ListDepartmentView.as_view()),
     path('departments/<int:pk>/', DetailDepartmentView.as_view()),
-]
+] + router.urls
