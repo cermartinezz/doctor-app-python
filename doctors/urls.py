@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from doctors.views import ListDoctorView, DetailDoctorView, ListDepartmentView, DetailDepartmentView
-from doctors.viewsets import DoctorViewSet
+from doctors.views import ListDepartmentView, DetailDepartmentView
+from doctors.viewsets import DoctorViewSet, DepartmentViewSet, DoctorAvailabilityViewSet, MedicalNoteViewSet
 
 router = DefaultRouter()
 router.register('doctors', DoctorViewSet)
+router.register('departments', DepartmentViewSet)
+router.register('availability', DoctorAvailabilityViewSet)
+router.register('medical_note', MedicalNoteViewSet)
 
-urlpatterns = [
-    path('departments/<int:pk>/', ListDepartmentView.as_view()),
-    path('departments/<int:pk>/', DetailDepartmentView.as_view()),
-] + router.urls
+
+urlpatterns = router.urls
