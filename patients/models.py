@@ -12,11 +12,17 @@ class Patient(Model):
     address = models.TextField()
     medical_history = models.TextField()
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 class Insurance(Model):
     patient = models.ForeignKey(Patient, related_name='insurances', on_delete=models.CASCADE)
     provider = models.CharField(max_length=100)
     expiration_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.patient.first_name} {self.patient.last_name} - {self.provider}"
 
 class MedicalRecord(Model):
     patient = models.ForeignKey(Patient, related_name='medical_records', on_delete=models.CASCADE)
@@ -24,3 +30,6 @@ class MedicalRecord(Model):
     diagnosis = models.TextField()
     treatment = models.TextField()
     follow_up_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.patient.first_name} {self.patient.last_name} - {self.date}"

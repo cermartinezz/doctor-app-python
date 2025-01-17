@@ -24,8 +24,8 @@ from doctors.viewsets import DoctorViewSet, DepartmentViewSet, DoctorAvailabilit
 router = DefaultRouter()
 router.register('doctors', DoctorViewSet)
 router.register('departments', DepartmentViewSet)
-router.register('availability', DoctorAvailabilityViewSet)
-router.register('medical_note', MedicalNoteViewSet)
+router.register('doctor_availability', DoctorAvailabilityViewSet)
+router.register('medical_notes', MedicalNoteViewSet)
 
 
 urlpatterns = router.urls
