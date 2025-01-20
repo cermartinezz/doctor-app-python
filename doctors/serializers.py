@@ -2,13 +2,27 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer
 
+from appointments.serializers import AppointmentSerializer
 from doctors.models import Doctor, Department, DoctorAvailability, MedicalNote
 
 
 class DoctorSerializer(ModelSerializer):
+    appointments = AppointmentSerializer(many=True, read_only=True)
+
     class Meta:
         model = Doctor
-        fields = "__all__"
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'qualification',
+            'contact_number',
+            'email',
+            'address',
+            'biography',
+            'is_on_vacation',
+            'appointments',
+        ]
 
     def validate_email(self, value):
         if "@example.com" in value:
